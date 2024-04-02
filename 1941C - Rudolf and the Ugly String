@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int cnt = 0;
+    for(int i = 1; i < n-1; i++){
+      if(s[i] == 'a' && s[i-1] == 'm' && s[i+1] == 'p') cnt++;
+      if(s[i] == 'i' && s[i-1] == 'p' && s[i+1] == 'e') cnt++;
+      if(i >=2)
+        if(s[i] == 'p' && s[i-2] == 'm' && s[i-1] == 'a' && s[i+1] == 'i' && s[i+2] == 'e') cnt--;
+    }
+    cout << cnt << endl;
+  }
+}
