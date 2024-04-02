@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+bool used[300005];
+ll tmp;
+char s[300000];
+ll n;
+ll a[300000];
+
+void kinh(int i){
+  ll cnt = 0;
+  for(int i = 0; i < n; i++){
+    if(!used[i]){
+      if(a[i] == cnt){
+        s[i] = 'a'+tmp;
+        cnt++;
+        used[i] = true;
+      }
+    }
+  }
+}
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    tmp = 0;
+    memset(used, false, sizeof(used));
+    cin >> n;
+    for(int i = 0; i < n; i++){
+      cin >> a[i];
+    }
+    for(int i = 0; i < n; i++){
+      if(!used[i]){
+        kinh(i);
+        tmp++;
+      }
+    }
+    for(int i = 0; i < n; i++){
+      cout << s[i];
+    }
+    cout << endl;
+    
+  }
+}
