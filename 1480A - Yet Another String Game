@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    string s;
+    cin >> s;
+    int n = 0;
+    while(n != s.size()){
+      if(n % 2 == 0){
+        if(s[n] == 'a') s[n] = 'b';
+        else s[n] = 'a';
+      }else{
+        if(s[n] == 'z') s[n] = 'y';
+        else s[n] = 'z';
+      }
+      n++;
+    }
+    cout << s << endl; 
+  }
+}
