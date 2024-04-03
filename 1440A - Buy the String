@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, ko, mot, h;
+    cin >> n >> ko >> mot >> h;
+    scanf("\n");
+    string s;
+    cin >> s;
+    ll tmp = 0;
+    ll tong = 0;
+    if(ko + h < mot){
+      while(tmp != s.size()){
+        if(s[tmp] == '1') tong += (ko+h);
+        else tong += ko;
+        tmp++;
+      }
+    }
+    else if(mot + h < ko){
+      while(tmp != s.size()){
+        if(s[tmp] == '0') tong += (mot+h);
+        else tong += mot;
+        tmp++;
+      }
+    }else{
+      while(tmp != s.size()){
+        if(s[tmp] == '0') tong += ko;
+        else tong += mot;
+        tmp++;
+      }
+    }
+    cout << tong << endl;
+  }
+}
