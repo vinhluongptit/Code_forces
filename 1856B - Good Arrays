@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+ 
+ 
+ 
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    int a[n];
+    ll sum = 0;
+    int ones = 0;
+    for(int i = 0; i < n; i++){
+      cin >> a[i];
+      sum += a[i];
+      if(a[i] == 1) ones++;
+    }
+    int totalb = ones*2 + n - ones;
+    if(totalb > sum || n == 1) cout << "no";
+    else cout << "yes";
+    cout << endl;
+  }
+}
