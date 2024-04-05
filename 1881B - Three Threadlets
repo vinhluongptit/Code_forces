@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int a, b, c;
+    cin >> a >> b >> c;
+    priority_queue<int> q;
+    q.push(a),q.push(b),q.push(c);
+    int nho = min({a, b, c});
+    int x = q.top();
+    int cnt = 0;
+    int minn = 1e9;
+    while(x != nho && cnt < 3){
+      q.pop();
+      cnt++;
+      int tmp1 = x - nho;
+      int tmp2 = nho;
+      minn = min(tmp1, minn);
+      q.push(tmp1); q.push(tmp2);
+      x = q.top();
+    }
+    if((minn == 1e9 || minn == nho) && q.top() == nho) cout << "yes";
+    else cout << "no";
+    cout << endl;
+  }
+}
