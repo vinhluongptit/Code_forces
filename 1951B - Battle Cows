@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  ll t;
+  cin >> t;
+  while(t--){
+    ll n, k;
+    cin >> n >> k;
+    ll a[n+1];
+    for(int i = 1; i <= n; i++){
+      cin >> a[i];
+    }
+    ll ok = 0;
+    ll tmp = -1;
+    for(int i = 1; i < k; i++){
+      if(a[i] > a[k]){
+        swap(a[i], a[k]);
+        k = i;
+        ok = 1;
+        break;
+      }else tmp++;
+    }
+    // cout << k << " " <<ok << " ";
+    ll cnt = 0;
+    if(ok == 0){
+      cnt = k-1;
+    }else cnt = 1;
+    
+    if(k == 1 && ok == 1) cnt = 0;
+    
+    // cout << cnt << " ";
+    
+    for(int i = k+1; i <= n; i++){
+      if(a[i] < a[k]){
+        cnt++;
+      }else break;
+    }
+    cout << max(cnt, tmp) << endl;
+  }
+}
