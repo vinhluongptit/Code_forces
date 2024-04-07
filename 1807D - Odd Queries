@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main()
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, q;
+    cin >> n >> q;
+    int a[n+1], tong[n+1];
+    ll sum = 0;
+    tong[0] = 0;
+    for(int i = 1; i <= n; i++){
+      cin >> a[i];
+      tong[i] = tong[i-1] + a[i];
+    }
+    while(q--){
+      int l, r, k;;
+      cin >> l >> r >> k;
+      ll tmp = tong[n] - (tong[r]-tong[l-1]) + (r-l+1)*k;
+      // cout << tmp << " ";
+      if(tmp % 2 == 0) cout << "NO";
+      else cout << "YES";
+      cout << endl;
+    }
+  }
+}
