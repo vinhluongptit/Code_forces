@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+#include <bits/stdc++.h>
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int ok = 1;
+    int l = 0, r = s.size()-1;
+    while(l < r){
+      if(s[l] == s[r]){
+        l++, r--;
+      }else if(s[l] < s[r]){
+        ok = 0;
+        break;
+      }else break;
+    }
+    if(l >= r) ok = 0;
+    if(ok){
+      string tmp = "";
+      string tmp2 = s;
+      while(!s.empty()){
+        char x = s.back();
+        tmp += x;
+        s.pop_back();
+      }
+      cout << tmp+tmp2;
+    }else cout << s;
+    cout << endl;
+  }
+}
