@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+
+
+int main()
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, c, d;
+    cin >> n >> c >> d;
+    ll dodai = n*n;
+    int a[dodai+5];
+    for(int i = 1; i <= dodai; i++){
+      cin >> a[i];
+    }
+    sort(a+1, a+dodai+1);
+    ll b[dodai+1];
+    b[1] = a[1];
+    vector<ll> v;
+    int m = n;
+    int f = a[1];
+    while(m){
+      v.push_back(f);
+      m--;
+      f = f+d;
+    }
+    for(int i = 2; i <= n; i++){
+      b[i] = b[i-1] + c;
+      // cout << b[i] << " ";
+      // v.push_back(b[i]);
+      int tmp = n;
+      int x = b[i];
+      while(tmp){
+        v.push_back(x);
+        tmp--;
+        x = x+d;
+      }
+    }
+    sort(v.begin(), v.end());
+    int cnt = 1;
+    int k = 1;
+    for(auto x : v){
+      if(x != a[cnt]){
+        k = 0;
+        break;
+      }
+      cnt++;
+      // cout << x <<  " ";
+    }
+    if(k == 1) cout << "yes";
+    else cout << "no";
+    cout << endl;
+ }
+}
