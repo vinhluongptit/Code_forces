@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+
+
+int main()
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, a, b;
+    cin >> n >> a >> b;
+    ll kq = 0;
+    if(a*2 > b){
+      if(n%2==0){
+        kq = (n/2) * b;
+      }else{
+         kq = (n/2) * b;
+         kq += a;
+      }
+    }else{
+      kq = a*n;
+    }
+    cout << kq << endl;
+ }
+}
