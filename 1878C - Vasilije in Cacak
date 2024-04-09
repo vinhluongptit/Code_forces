@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+  ll t;
+  cin >> t;
+  while(t--){
+    ll n, k, x;
+    cin >> n >> k >> x;
+    ll tongn = n*(n+1.0) / 2;
+    ll tongk = k*(k+1.0) / 2;
+    ll tong = tongn - ((ll)(n-k)*(n-k+1)/2);
+    if(x <= tong && x >= tongk){
+      cout << "YES";
+    }else cout << "NO";
+    cout << endl;
+  }
+}
