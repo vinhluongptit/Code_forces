@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+  ll t;
+  cin >> t;
+  while(t--){
+    ll n, k;
+    cin >> n >> k;
+    ll a[n+1];
+    ll kq = 5;
+    ll sum = 1;
+    int ok2 = 10, ok3 = 10, ok5 = 10, ok4 = 10, chan = 0, le = 0;
+    for(int i = 1; i <= n; i++){
+      cin >> a[i];
+      
+      if(a[i] % 2 == 0){
+        ok2 = 0;
+        chan++;
+      }
+      else{
+        ok2 = min(ok2, 1);
+        le++;
+      }
+      
+      if(a[i] % 3 == 0) ok3 = 0;
+      else if(a[i] % 3 == 1) ok3 = min(ok3, 2);
+      else ok3 = min(ok3, 1);
+      
+      if(a[i] % 5 == 0) ok5 = 0;
+      else if(a[i] % 5 == 1) ok5 = min(ok5, 4);
+      else if(a[i] % 5 == 2) ok5 = min(ok5, 3);
+      else if(a[i] % 5 == 3) ok5 = min(ok5, 2);
+      else if(a[i] % 5 == 4) ok5 = min(ok5, 1);
+      
+      if(a[i] % 4 == 0) ok4 = 0;
+      else if(a[i] % 4 == 1) ok4 = min(ok4, 3);
+      else if(a[i] % 4 == 2) ok4 = min(ok4, 2);
+      else ok4 = min(ok4, 1);
+      
+    }
+    if(k == 2){
+      cout << ok2;
+    }else if(k == 3){
+      cout << ok3;
+    }else if(k == 5){
+      cout << ok5;
+    }else{
+      int tmp = max(0, 2-chan);
+      cout << min(tmp, ok4);
+    }
+    cout << endl;
+  }
+}
