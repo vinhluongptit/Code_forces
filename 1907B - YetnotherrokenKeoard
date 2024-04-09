@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+
+
+int main()
+{
+  int t;
+  cin >> t;
+  while(t--){
+    string s;
+    cin >> s;
+    map<int, char> mp;
+    stack<int> upp, low;
+    for(int i = 0; i < s.size(); i++){
+      if(s[i] == 'b'){
+        if(!low.empty()){
+          int x = low.top();
+          mp[x] = '&';
+          low.pop();
+        }
+        continue;
+      }
+      if(s[i] == 'B'){
+        if(!upp.empty()){
+          int x = upp.top();
+          mp[x] = '&';
+          upp.pop();
+        }
+        continue;
+      }
+      mp[i] = s[i];
+      if(s[i] >= 'a' && s[i] <= 'z'){
+        low.push(i);
+      }else{
+        upp.push(i);
+      }
+    }
+    for(int i = 0; i < s.size(); i++){
+      if(mp.count(i) && mp[i] != '&'){
+        cout << (char)mp[i];
+      }
+    }
+    cout << endl;
+  }
+}
