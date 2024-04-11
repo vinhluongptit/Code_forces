@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+ll fact(ll c){
+  ll tmp = 0;
+  for(int i = 1; i <= c; i++){
+    tmp += i;
+  }
+  return tmp;
+}
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    ll n, k, q;
+    cin >> n >> k >> q;
+    ll a[n+1];
+    for(int i = 1; i <= n; i++){
+      cin >> a[i];
+    }
+    int tmp = 0;
+    ll cnt = 0;
+    for(int i = 1; i <= n; i++){
+      if(a[i] <= q) tmp++;
+      else{
+        if(tmp >= k){
+          cnt += fact(tmp-k+1);
+          // cout << cnt << " ";
+          tmp = 0;
+        }else tmp = 0;
+      }
+    }
+    if(tmp >= k) cnt += fact(tmp-k+1);
+    cout << cnt;
+    cout << endl;
+  }
+}
