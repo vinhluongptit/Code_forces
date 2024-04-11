@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+ 
+bool cmp(pair<int,int> a, pair<int,int> b){
+  if(a.second != b.second){
+    return a.second > b.second;
+  }
+  return a.first < b.first;
+}
+ 
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    ll a[n+1];
+    vector<pair<int, int>> v;
+    for(int i = 1; i <= n; i++){
+      cin >> a[i];
+      pair<int,int> tmp;
+      tmp.first = i;
+      tmp.second = a[i] % k;
+      if(tmp.second == 0) tmp.second = k;
+      v.push_back(tmp);
+    }
+    sort(v.begin(), v.end(), cmp);
+    for(auto x :v){
+      cout << x.first << " ";
+    }
+    cout << endl;
+  }
+}
