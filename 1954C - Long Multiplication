@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+ 
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+      string x, y;
+      cin >> x >> y;
+      int ok = 1;
+      ll cnt = 0;
+      int tt;
+      while(ok){
+        if(x[cnt] != y[cnt]){
+          ok = 0;
+          if(x[cnt] > y[cnt]) tt = 1;
+          else tt = 0;
+        }
+        cnt++;
+      }
+      for(int i = cnt; i < x.size(); i++){
+        if(tt == 1){
+          if((int)x[i] > (int)y[i]){
+            char tmp = x[i];
+            x[i] = y[i];
+            y[i] = tmp;
+          }
+        }else{
+          if((int)x[i] < (int)y[i]){
+            char tmp = x[i];
+            x[i] = y[i];
+            y[i] = tmp;
+          }
+        }
+      }
+      cout << x << endl << y << endl;
+      
+    }
+}
