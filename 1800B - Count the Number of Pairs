@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    int upp[100];
+    int low[100];
+    memset(upp, 0, sizeof(upp));
+    memset(low, 0, sizeof(low));
+    for(int i = 0; i < n; i++){
+      if(s[i] >= 'a' && s[i] <= 'z'){
+        low[s[i]-32]++;
+      }else{
+        upp[s[i]]++;
+      }
+    }
+    int kq = 0;
+    for(int i = 'A'; i <= 'Z'; i++){
+      int tmp = min(low[i], upp[i]);
+      kq += tmp;
+      low[i] -= tmp;
+      upp[i] -= tmp;
+      int tmp2 = min(k,(low[i]+upp[i])/ 2);
+      kq += tmp2;
+      k -= tmp2;
+    }
+    cout << kq << endl;
+  }
+}
