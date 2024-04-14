@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int mod = 1e9+7;
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    for(int i = 0 ; i < n; i++){
+      cin >> a[i];
+    }
+    ll sum = 0, cur = 0, S = 0;
+    for(int i = 0; i < n; i++){
+      sum += a[i];
+      cur += a[i];
+      cur = max(cur, 0LL);
+      S = max(S, cur);
+    }
+    int t = 1;
+    sum = ((sum%mod)+mod)%mod;
+    S = S%mod;
+    for(int i = 0; i < k; i++){
+      t = t*2%mod;
+    }
+    // cout << sum << " " << S<< " ";
+    ll ans = (sum + t*S - S+mod) % mod;
+    cout << ans << endl;
+    
+  }
+}
