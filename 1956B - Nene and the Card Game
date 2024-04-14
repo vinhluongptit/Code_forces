@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int a[200002];
+ 
+int main() 
+{
+  int t;
+  cin >> t;
+  memset(a, 0, sizeof(a));
+  while(t--){
+    int n;
+    cin >> n;
+    int cnt = 0;
+    for(int i = 1; i <= n; i++){
+      int x; cin >> x;
+      a[x]++;
+      if(a[x] == 2) cnt++;
+    }
+    cout << cnt;
+    for(int i = 1; i <= n; i++){
+      a[i] = 0;
+    }
+    cout << endl;
+  }
+  
+}
