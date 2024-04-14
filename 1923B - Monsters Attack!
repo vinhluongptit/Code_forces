@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int mod = 1e9+7;
+
+bool cmp(pair<int,int> a, pair<int,int> b){
+  return abs(a.first) < abs(b.first);
+}
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n), x(n);
+    for(auto &tmp : a) cin >> tmp;
+    for(auto &tmp : x) cin >> tmp;
+    vector<ll> s(n+1);
+    for(int i = 0; i < n; i++){
+      s[abs(x[i])] += a[i]; 
+    }
+    ll thua = 0;
+    int ok = 1;
+    for(int i = 1; i <= n; i++){
+      thua += k - s[i];
+      if(thua < 0){
+        ok = 0;
+        break;
+      }
+    }
+    if(ok == 1) cout << "YES";
+    else cout << "NO";
+    cout << endl;
+ }
+  
+}
