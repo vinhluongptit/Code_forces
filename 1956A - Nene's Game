@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int k, q;
+    cin >> k >> q;
+    int a[k+1], b[q+1];
+    for(int i = 1; i <= k; i++){
+      cin >> a[i];
+    }
+    int tmp = *min_element(a+1, a+k+1);
+    for(int i = 1 ;i <= q; i++){
+      cin >> b[i];
+      if(b[i] < tmp){
+        cout << b[i];
+      }else{
+        cout << tmp-1;
+      }
+      cout << " ";
+    }
+    cout << endl;
+  }
+  
+}
