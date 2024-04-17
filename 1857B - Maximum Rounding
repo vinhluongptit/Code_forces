@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+      // cout << 10 - t << " ";
+      string s;
+      cin >> s;
+      reverse(s.begin(), s.end());
+      int idx = -1;
+      vector<char> v;
+      for(int i = 0; i < s.size(); i++){
+        if(s[i] -'0' >= 5){
+          s[i+1]++;
+          idx = i+1;
+          v.clear();
+        }
+        else{
+          v.push_back(s[i]);
+        }
+      }
+      if(s[s.size()-1] - '0' >= 5){
+        idx = s.size();
+        v.clear();
+        v.push_back('1');
+      }
+      reverse(v.begin(), v.end());
+      for(auto x : v){
+        cout << x;
+      }
+      for(int i = 0; i < idx; i++) cout << 0;
+      cout << endl;
+    }
+    return 0;
+}
