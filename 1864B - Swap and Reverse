@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    s = '0'+s;
+    vector<char> chan, le;
+    for(int i = 1; i <= n; i++){
+      if(i % 2 == 1) le.push_back(s[i]);
+      else chan.push_back(s[i]);
+    }
+    int cnt = 0;
+    if(k % 2 == 1){
+      sort(chan.begin(), chan.end());
+      sort(le.begin(), le.end());
+      for(int i = 1; i <= n; i++){
+        if(i % 2 == 1){
+          cout << le[cnt];
+        }else{
+          cout << chan[cnt];
+          cnt++;
+        }
+      }
+    }else{
+      sort(s.begin(), s.end());
+      for(int i = 1; i < s.size(); i++){
+      cout << s[i];
+      }
+    }
+    cout << endl;
+  }
+}
