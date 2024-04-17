@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k, a, b;
+    cin >> n >> k >> a >> b;
+    vector<int> sx(n+1), sy(n+1);
+    for(int i = 1; i <= n; i++){
+      cin >> sx[i] >> sy[i];
+    }
+    ll ans = (ll)(abs(sx[a] - sx[b])) + (ll)(abs(sy[a] - sy[b]));
+    ll mins = 1e18, mint = 1e18;
+    for(int i = 1; i <= k; i++){
+      mins = min(mins, (ll)(abs(sx[i]-sx[a]) + (ll)(abs(sy[i]-sy[a]))));
+      mint = min(mint,(ll)(abs(sx[i]-sx[b]) + (ll)(abs(sy[i]-sy[b]))));
+    }
+    ans = min(ans, mins+mint);
+    cout << ans << endl;
+  }
+}
