@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+int Max = 1e5+1;
+
+vector<int> comb, dp(Max, 0);
+
+void khoitao(){
+  comb.push_back(1);
+  for(int i = 0; i < comb.size(); i++){
+    if(comb[i]*10 > Max) break;
+    comb.push_back(comb[i]*10);
+    comb.push_back(comb[i]*10 + 1);
+  }
+}
+
+void khoitao2(){
+  dp[1] = 1;
+  for(int i = 2; i < Max; i++){
+    for(int j = 0; j < comb.size(); j++){
+      dp[i] |= (i % comb[j] == 0) ? (dp[i/comb[j]]) : 0;
+    }
+  }
+}
+
+int main() 
+{
+  int t;
+  cin >> t;
+  khoitao();
+  khoitao2();
+  while(t--){
+    int n;
+    cin >> n;
+    if(dp[n]) cout << "YES";
+    else cout << "NO";
+    cout << endl;
+  }
+}
