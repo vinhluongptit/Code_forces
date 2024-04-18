@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+ll dp[200002];
+
+ll check(int i){
+  ll sum = 0;
+  while(i){
+    sum += i%10;
+    i /= 10;
+  }
+  return sum;
+}
+
+void ktao(){
+  dp[0] = 0;
+  for(int i = 1; i <= 2e5; i++){
+    dp[i] = dp[i-1] + check(i);
+  }
+}
+
+int main() 
+{
+  int t;
+  cin >> t;
+  ktao();
+  while(t--){
+    int n;
+    cin >> n;
+    cout << dp[n] << endl;
+  }
+}
