@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int x, n;
+    cin >> x >> n;
+    int kq = 1;
+    for(int i = 1; i <= sqrt(x); i++){
+      if(x%i == 0){
+        if(n <= x/i) kq = max(kq, i);
+        if(n <= i) kq = max(kq, x/i);
+      }
+    }
+    cout << kq << endl;
+  }
+}
