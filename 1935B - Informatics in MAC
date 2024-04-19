@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    vector<int> cnt1(n+1), cnt2(n+1);
+    int a[n+1];
+    int ok = 0;
+    for(int i = 0; i < n; i++){
+      cin >> a[i];
+      cnt2[a[i]]++;
+    }
+    int mex1 = 0, mex2 = 0;
+    while(cnt2[mex2])
+      mex2++;
+    for(int i = 0; i < n; i++){
+      cnt1[a[i]]++;
+      cnt2[a[i]]--;
+      if(cnt2[a[i]] == 0 && mex2 > a[i]) mex2 = a[i];
+      while(cnt1[mex1]) mex1++;
+      if(mex1 == mex2){
+        cout << 2 << endl;
+        cout << 1 << " " << i+1 << endl;
+        cout << i+2 << " " << n;
+        ok = 1;
+        break;
+      }
+    }
+    if(ok == 0) cout << -1;   
+    cout << endl;
+  }
+}
