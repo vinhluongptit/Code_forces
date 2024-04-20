@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using ll = long long;
+using namespace std;
+ 
+int t;
+ 
+int main() {
+    int t;
+    cin >> t;
+    while(t--){
+      int n;
+      cin >> n;
+      vector<int> v(n);
+      ll a[n];
+      ll le[n];
+      int cnt = 0;
+      for(int i = 0; i < n; i++){
+        cin >> v[i];
+        if(i != 0){
+         a[i] = a[i-1] + v[i];
+        }
+        else a[i] = v[i];
+        if(v[i] % 2 == 1){
+           cnt++;
+        }
+        le[i] = cnt;
+      }
+      cout << a[0] << " ";
+      for(int i = 1; i < n; i++){
+        int tmp;
+        if(le[i] % 3 == 0) tmp = le[i] / 3;
+        else if(le[i] % 3 == 1) tmp = (le[i] / 3) + 1;
+        else tmp = le[i] / 3;
+        cout << a[i] - tmp << " ";
+      }
+      cout << endl;
+}
+}
