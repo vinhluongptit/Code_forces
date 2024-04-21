@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using ll = long long;
+using namespace std;
+ 
+ll gcd(ll a, ll b){
+  if(b == 0) return a;
+  return gcd(b, a%b);
+}
+ 
+ll lcm(ll a, ll b){
+  return (a*b) / gcd(a, b);
+}
+ 
+int main() {
+    int t;
+    cin >> t;
+    while(t--){
+      ll n, x, y;
+      cin >> n >> x >> y;
+      ll sum = 0;
+      ll so1 = n/x - n/lcm(x, y);
+      ll so2 = n/y - n/lcm(x, y);
+      ll tongdau = n*(n+1)/2;
+      sum += tongdau - (n-so1)*(n-so1+1)/2;
+      sum -= (so2)*(so2+1)/2;
+      cout << sum;
+      cout << endl;
+}
+}
