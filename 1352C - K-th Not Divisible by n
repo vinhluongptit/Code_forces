@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    int dmm = k;
+    ll kq = k/n;
+    k %= n;
+    ll tongdu = k+kq;
+    while(tongdu / n != 0){
+      int tmp = tongdu / n;
+      kq += tmp;
+      tongdu %= n;
+      tongdu += tmp;
+    }
+    cout << kq + dmm;
+    cout << endl;
+  }
+}
