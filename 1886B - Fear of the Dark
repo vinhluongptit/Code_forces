@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+double dist(int a, int b, int c, int d){
+  return sqrt((a-c)*(a-c) + (b-d)*(b-d));
+}
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int xp, yp, xa, ya, xb, yb;
+    cin >> xp >> yp >> xa >> ya >> xb >> yb;
+    double p_a = dist(xp,yp,xa,ya), p_b = dist(xp, yp, xb, yb);
+    double o_a = dist(xa,ya, 0, 0), o_b = dist(xb, yb, 0, 0);
+    double a_b = dist(xa, ya, xb, yb);
+    //th1 
+    double ans = 1e9;
+    double th1a = max(o_a, p_a);
+    double th1b = max(o_b, p_b);
+    ans = min(th1a, th1b);
+    //th2
+    double th2a = max(p_b, o_a);
+    double th2b = max(p_a, o_b);
+    ans = min(ans, max(a_b/2, th2b));
+    ans = min(ans, max(a_b/2, th2a));
+    cout << setprecision(10) << fixed << ans << endl;
+  }
+}
