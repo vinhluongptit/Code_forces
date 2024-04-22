@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    vector<string> v;
+    for(int i = 0; i < n; i++){
+      string s; cin >> s;
+      v.push_back(s);
+    }
+    ll cnt = 0;
+    for(int i = 0; i < n/2; i++){
+      for(int j = 0; j < n/2; j++){
+        vector<ll> res;
+        res.push_back(v[i][j] - 'a');
+        res.push_back(v[j][n-1-i] - 'a');
+        res.push_back(v[n-1-j][i] - 'a');
+        res.push_back(v[n-1-i][n-1-j] - 'a');
+        sort(res.begin(), res.end());
+        for(int k = 0; k < 3; k++){
+          cnt += res[3] - res[k];
+        }
+      }
+    }
+    cout << cnt << endl;
+  }
+}
