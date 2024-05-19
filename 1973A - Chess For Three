@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+using namespace std;
+
+
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int x, y, z;
+    cin >> x >> y >> z;
+    int tmp = x + y + z;
+    int to, be;
+    if(x >= y && x >= z){
+      to = x;
+      be = y+z;
+    }else if(y >= x && y >= z){
+      to = y;
+      be = x+z;
+    }else{
+      to = z;
+      be = y+x;
+    }
+    if(tmp % 2 == 1) cout << -1;
+    else{
+      int dap;
+      if(be <= to){
+        dap = be;
+      }else dap = tmp/2;
+      cout << dap;
+    }
+    cout << endl;
+  }
+}
