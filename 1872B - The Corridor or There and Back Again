@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    int dap = 1e9;
+    while(n--){
+      int x, y; cin >> x >> y;
+      int tmp = x + ((y-1)/2);
+      dap = min(tmp, dap);
+    }
+    cout << dap << endl;
+  }
+}
