@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    ll kq = 0;
+    vector<pair<int,int>> v(n);
+    for(int i = 0; i < n; i++){
+      int x; cin >> x;
+      int be1 = 1e9, be2 = 1e9;
+      for(int j = 0; j < x; j++){
+        int y; cin >> y;
+        if(y < be1){
+          be2 = be1;
+          be1 = y;
+        }
+        else if(y < be2) be2 = y;
+      }
+      v[i] = make_pair(be1,be2);
+    }
+    sort(v.begin(), v.end(), [&](pair<int,int> a, pair<int,int> b){
+      return a.second < b.second;
+    });
+    int benhat = v[0].first;
+    for(int i = 1; i < n; i++){
+      kq += v[i].second;
+      benhat = min(benhat, v[i].first);
+    }
+    kq += benhat;
+    cout << kq << endl;
+    
+  }
+}
