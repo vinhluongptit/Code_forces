@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int tmp1;
+
+string bien(ll x){
+  string s = {};
+  int ok = 1;
+  for(int i = 32; i >= 0; i--){
+    if(x >= pow(2, i)){
+      if(ok){
+        tmp1 = max(tmp1, i);
+      }
+      s = '1' + s;
+      x -= pow(2, i);
+    }else s = '0' + s;
+  }
+  return s;
+}
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    tmp1 = 0;
+    int x, y;
+    cin >> x >> y;
+    string s1 = bien(x);
+    string s2 = bien(y);
+    ll tmp;
+    for(int i = 0; i <= tmp1; i++){
+      if(s1[i] != s2[i]){
+        tmp = i;
+        break;
+      }
+    }
+    cout << (ll)pow(2, tmp);
+    cout << endl;
+  }
+}
