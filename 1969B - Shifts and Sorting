@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    string s;
+    cin >> s;
+    deque<char> dq;
+    for(int i = 0; i < s.size(); i++){
+      dq.push_back((s[i]));
+    }
+    while(!dq.empty()&&dq.front() == '0'){
+      dq.pop_front();
+    }
+    while(!dq.empty()&&dq.back() == '1'){
+      dq.pop_back();
+    }
+    ll cnt = 0;
+    ll kq = 0;
+    while(!dq.empty()){
+      if(dq.front() == '1') cnt++;
+      else{
+        kq +=cnt+1;
+      }
+      dq.pop_front();
+    }
+    cout << kq << endl;
+  }
+}
