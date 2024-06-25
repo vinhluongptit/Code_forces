@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+
+int main() 
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  int t;
+  cin >> t;
+  while(t--){
+    ll x, y, k;
+    cin >> x >> y >> k;
+    ll tmp = y - (x%y);
+    if(k < tmp){
+      cout << x+k;
+    }else if(k == tmp){
+      x += k;
+      while(!(x % y)){
+        x /= y;
+      }
+      cout << x;
+    }else{
+      while(1){ 
+        if(x == 1){
+          break;
+        }
+        if(k < tmp){
+          x += k;
+          tmp = 0;
+          break;
+        }else{
+          x += tmp;
+          k -= tmp;
+          while(!(x % y)){
+           x /= y;
+          }
+          ll tam = x%y;
+          tmp = y-tam;
+        }
+      }
+      if(tmp){
+        cout << k %(y-1)+1;
+      }else cout << x;
+       
+    }
+    cout << endl;
+  }
+}
