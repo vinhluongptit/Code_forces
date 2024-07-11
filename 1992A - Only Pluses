@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int a, b, c;
+    cin >> a >> b >> c;
+    int tmp = 5;
+    while(tmp){
+      int x = min({a, b, c});
+      if(a == x) a++;
+      else if(b == x) b++;
+      else c++;
+      tmp--;
+    }
+    cout << a*b*c << endl;
+  }
+}
