@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    vector<int> v(k);
+    int tmp = -100, idx,cnt = 0;
+    for(int i = 0; i < k; i++){
+      cin >> v[i];
+      if(v[i] > tmp){
+        tmp = v[i];
+        idx = i;
+      }
+    }
+    for(int i = 0; i < k; i++){
+      if(i != idx){
+        if(v[i] == 1) cnt++;
+        else{
+          cnt += v[i]-1;
+          cnt += v[i];
+        }
+      }
+    }
+    cout << cnt << endl;
+  }
+}
