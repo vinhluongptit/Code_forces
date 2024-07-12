@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n, m;
+    cin >> n >> m;
+    string s;
+    cin >> s;
+    set<int> v;
+    for(int i = 0; i < m; i++){
+      int x;cin >> x;
+      v.insert(x);
+    }
+    vector<int> c;
+    for(int i = 0; i < m; i++){
+      char x; cin >> x;
+      c.push_back((char)x);
+    }
+    sort(c.begin(), c.end());
+    int cnt = 0;
+    for(auto x : v){
+      s[x-1] = (char)c[cnt];
+      cnt++;
+    }
+    cout << s << endl;
+  }
+}
