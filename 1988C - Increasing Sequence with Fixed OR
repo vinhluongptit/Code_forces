@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    ll n;
+    cin >> n;
+    vector<ll> v;
+    for(int i = 63; i >= 0; i--){
+      if((1ll << i) & n){
+        ll tmp = n ^ (1ll << i);
+        if(tmp) v.push_back(tmp);
+      }
+    }
+    v.push_back(n);
+    cout << v.size() << endl;
+    for(auto x : v){
+      cout << x << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+}
