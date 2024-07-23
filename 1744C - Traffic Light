@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    char c;
+    cin >> n >> c;
+    string s;
+    cin >> s;
+    int ans = 0, tmp = -1, dm = -1;
+    for(int i = n-1; i >= 0; i--){
+      if(s[i] == 'g') tmp = i;
+      if(s[i] == c){
+        if(tmp == -1){
+          dm = i;
+        }else{
+          ans = max(ans, tmp - i);
+        }
+      }
+    }
+    if(dm != -1){
+      ans = max(ans, (n)-dm+tmp);
+    }
+    cout << ans << endl;
+  }
+}
