@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int mod = 1e9 + 7;
+
+int main() 
+{
+	int t;
+	cin >> t;
+	while(t--){
+		int l, r;
+		cin >> l >> r;
+		int tmp = 0;
+		int ans = 0;
+		int dau = -1, cuoi = -1;
+		for(int i = 0; i < 50; i++){
+			if(l <= pow(3, i) && r >= pow(3,i+1)-1){
+				ans += (pow(3,i+1) - pow(3,i)) * (i+1);
+				tmp = -1;
+				// cout << ans << endl;
+			}else if(dau == -1 && l > pow(3,i) && l < pow(3,i+1) && r >= pow(3,i+1)){
+				dau = i;
+				tmp = -1;
+			}else if(cuoi == -1 && r >= pow(3,i) && r < pow(3,i+1) && l <= pow(3,i)){
+				cuoi = i;
+				tmp = -1;
+				break;
+			}
+			if(r < pow(3,i)){
+				if(tmp != -1) tmp = i;
+				break;
+			}
+		}
+		if(dau != -1){
+			//cout << dau << endl;
+			ans += (pow(3, dau+1) - l) * (dau+1);
+		}
+		if(cuoi != -1){
+			//cout << cuoi << endl;
+			ans += (r - pow(3, cuoi)+1) * (cuoi+1);
+		}
+		if(dau == -1 && cuoi == -1 && tmp != -1){
+			ans += (r-l+1) * tmp;
+		}
+		while(l){
+			ans++;
+			l /= 3;
+		}
+		cout << ans;
+		cout << endl;
+	}
+}
