@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+ll dp[1002][1002];
+int main() 
+{
+	int t;
+	cin >> t;
+	while(t--){
+		int n, k;
+		cin >> n >> k;
+		int ans = 0;
+		int tmp = n-1;
+		if(k >= n){
+			ans++;
+			k -=n;
+		}
+		while(k){
+			if(k >= tmp){
+				ans++;
+				k -= tmp;
+			}else break;
+			if(k >= tmp){
+				ans++;
+				k -= tmp;
+			}else break;
+			tmp--;
+		}
+		if(k) ans++;
+		cout << ans << endl;
+	}
+}
