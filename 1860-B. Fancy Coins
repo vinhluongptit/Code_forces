@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+
+int main() 
+{
+	int t;
+	cin >> t;
+	while(t--){
+		ll m, k, a1, a2;
+		cin >> m >> k >> a1 >> a2;
+		ll ans = 0;
+		if(m > a2*k){
+			m -= a2*k;
+		}else{
+			m %= k;
+		}
+		if(m > a1){
+			m -= a1;
+		}else{
+			m = 0;
+		}
+		if(m == 0){
+			
+		}
+		else if(m < k){
+			if(m + a1 >= k) ans = 1;
+			else ans = m;
+		}else{
+			ans = (m / k);
+			m %= k;
+			if(m == 0){
+				
+			}
+			else if(m + a1 >= k) ans++;
+			else ans += m;
+		}
+		cout << ans ;
+		cout << endl;
+	}
+}
