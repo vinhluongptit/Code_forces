@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+	int t;
+	cin >> t;
+	while(t--){
+		int n;
+		cin >> n;
+		vector<int> v(n);
+		int check[n+1] = {0};
+		for(int i = 0; i < n; i++){
+			cin >> v[i];
+		}
+		int ok = 1;
+		check[v[0]] = 1;
+		for(int i = 1; i < n; i++){
+			if(check[v[i]]) ok = 0;
+			check[v[i]] = 1;
+			if(v[i] == 1){
+				if(!check[2]) ok = 0;
+			}else if(v[i] == n){
+				if(!check[n-1]) ok = 0;
+			}else{
+				if(!check[v[i]-1] && !check[v[i]+1]){
+					ok = 0;
+				}
+			}
+		}
+		if(ok) cout << "YES";
+		else cout << "NO";
+		cout << endl;
+	}
+}
