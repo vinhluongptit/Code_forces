@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() 
+{
+	int t;
+	cin >> t;
+	while(t--){
+		int l, r; cin >> l >> r;
+		int tmp = r - l;
+		int cnt = 1;
+		int adj = 1;
+		while(tmp){
+			if(tmp >= adj){
+				tmp -= adj;
+			}else{
+				break;
+			}
+			cnt++;
+			adj++;
+		}
+		cout << cnt;
+		cout << endl;
+	}
+}
