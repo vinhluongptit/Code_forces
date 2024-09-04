@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int mod = 1e9 + 7;
+
+int main() 
+{
+	int t;
+	cin >> t;
+	while(t--){
+		string s; int n;
+		cin >> s >> n;
+		int h = (s[0] - '0')*10 + (s[1] - '0');
+		int m = (s[3] - '0')*10 + (s[4] - '0');
+		map<int, int> mp;
+		int cnt = 0;
+		while(1){
+			int tmp = h*100 + m;
+			if(mp[tmp]){
+				break;
+			}
+			mp[tmp]++;
+			string s1 = to_string(h);
+			string s2 = to_string(m);
+			if(s1.size() == 1) s1 = '0'+s1;
+			if(s2.size() == 1) s2 = '0'+s2;
+			if(s1[0] == s2[1] && s1[1] == s2[0]){
+				cnt++;
+			}
+			m += n;
+			int cc = m / 60;
+			h += cc;
+			m %= 60;
+			h %= 24;
+		}
+		cout << cnt << endl;
+	}
+}
