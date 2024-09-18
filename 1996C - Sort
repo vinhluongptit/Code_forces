@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+const int mod = 1e9 + 7;
+
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--){
+		int n, q;
+		cin >> n >> q;
+		string a, b;
+		cin >> a >> b;
+		int storea[n+1][30] = {0};
+		int storeb[n+1][30] = {0};
+		for(int i = 0; i < n; i++){
+			if(i != 0){
+				for(int j = 0; j < 26; j++){
+					storea[i][j] = storea[i-1][j];
+					storeb[i][j] = storeb[i-1][j];
+				}
+			}
+			storea[i][a[i] - 'a']++;
+			storeb[i][b[i] - 'a']++;
+		}
+//		for(int i = 0; i < n; i++){
+//			for(int j = 0; j < 26; j++) cout << storeb[i][j] << " ";
+//			cout << endl;
+//		}
+		while(q--){
+			int ans = 0;
+			int l, r; cin >> l >> r;
+			l--, r--;
+			for(int i = 0; i < 26; i++){
+				int hi1, hi2;
+				if(l == 0) hi1 = 0;
+				else hi1 = storea[l-1][i];
+				if(l == 0) hi2 = 0;
+				else hi2 = storeb[l-1][i];
+				int tmp1 = storea[r][i] - hi1;
+				int tmp2 = storeb[r][i] - hi2;
+				ans += max(0, tmp2 - tmp1);
+			}
+			cout << ans << endl;
+		}
+	}
+}
