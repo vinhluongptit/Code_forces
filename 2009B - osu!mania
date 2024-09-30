@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std;
+using namespace __gnu_pbds;
+using ll = long long;
+const int mod = 1e9 + 7;
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--){
+		int n;
+		cin >> n;
+		vector<int> v;
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < 4; j++){
+				char x; cin >> x;
+				if(x == '#') v.push_back(j+1);
+			}
+		}
+		reverse(v.begin(), v.end());
+		for(auto it : v){
+			cout << it << " ";
+		}
+		cout << endl;
+	}
+}
