@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+  int t;
+  cin >> t;
+  while(t--){
+    int n; cin >> n;
+    int tmp = n/5;
+    int hi = n % 5;
+    string s = "";
+    string o = "ueoai";
+    for(int i = 0; i < 5; i++){
+      int ha = tmp;
+      if(i+1 <= hi) ha++;
+      for(int j = 0; j < ha; j++){
+        s += o[i];
+      }
+    }
+    cout << s << endl;
+  }
+}
